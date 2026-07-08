@@ -6,16 +6,35 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-
     public function up(): void
     {
-        //
-    }
+        Schema::table('cargos', function (Blueprint $table) {
 
+            $table->foreignId('driver_id')
+                ->nullable()
+                ->after('user_id')
+                ->constrained()
+                ->nullOnDelete();
+
+            $table->foreignId('vehicle_id')
+                ->nullable()
+                ->after('driver_id')
+                ->constrained()
+                ->nullOnDelete();
+
+        });
+    }
 
     public function down(): void
     {
-        //
-    }
+        Schema::table('cargos', function (Blueprint $table) {
 
+            $table->dropForeign(['driver_id']);
+            $table->dropForeign(['vehicle_id']);
+
+            $table->dropColumn('driver_id');
+            $table->dropColumn('vehicle_id');
+
+        });
+    }
 };
