@@ -6,24 +6,24 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+
     public function up(): void
     {
         Schema::table('cargos', function (Blueprint $table) {
 
             $table->foreignId('driver_id')
-                ->nullable()
-                ->after('user_id')
-                ->constrained()
-                ->nullOnDelete();
+                  ->nullable()
+                  ->constrained('drivers')
+                  ->nullOnDelete();
 
             $table->foreignId('vehicle_id')
-                ->nullable()
-                ->after('driver_id')
-                ->constrained()
-                ->nullOnDelete();
+                  ->nullable()
+                  ->constrained('vehicles')
+                  ->nullOnDelete();
 
         });
     }
+
 
     public function down(): void
     {
@@ -32,9 +32,12 @@ return new class extends Migration
             $table->dropForeign(['driver_id']);
             $table->dropForeign(['vehicle_id']);
 
-            $table->dropColumn('driver_id');
-            $table->dropColumn('vehicle_id');
+            $table->dropColumn([
+                'driver_id',
+                'vehicle_id'
+            ]);
 
         });
     }
+
 };
