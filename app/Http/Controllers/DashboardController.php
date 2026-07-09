@@ -122,7 +122,7 @@ class DashboardController extends Controller
 
 
 
-        return redirect('/tracking');
+        return view('dashboard.user');
 
 
     }
