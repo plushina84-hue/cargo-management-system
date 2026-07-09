@@ -3,114 +3,69 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-<title>
-Cargo Management System
-</title>
+    <title>
+        Cargo Management System
+    </title>
 
 
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
-
-<style>
-
-
-body{
-
-background:#f5f7fb;
-
-min-height:100vh;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-}
-
-
-
-.auth-card{
-
-background:white;
-
-padding:35px;
-
-border-radius:20px;
-
-box-shadow:0 10px 30px rgba(0,0,0,.1);
-
-width:100%;
-
-max-width:450px;
-
-}
-
-
-
-.logo{
-
-text-align:center;
-
-font-size:35px;
-
-color:#0d6efd;
-
-margin-bottom:20px;
-
-}
-
-
-
-</style>
-
+    @vite([
+        'resources/css/app.css',
+        'resources/js/app.js'
+    ])
 
 </head>
 
 
-
-<body>
-
+<body class="min-h-screen bg-gradient-to-br from-blue-900 via-blue-700 to-cyan-600 flex items-center justify-center">
 
 
-<div class="auth-card">
+<div class="w-full max-w-md">
 
 
-<div class="logo">
+    <div class="bg-white rounded-3xl shadow-2xl p-8">
 
-<i class="bi bi-truck"></i>
+
+        <div class="text-center mb-8">
+
+
+            <div class="mx-auto w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
+
+                <span class="text-white text-2xl font-bold">
+                    CMS
+                </span>
+
+            </div>
+
+
+            <h1 class="mt-4 text-2xl font-bold text-gray-800">
+
+                Cargo Management System
+
+            </h1>
+
+
+            <p class="text-gray-500 text-sm mt-2">
+
+                Secure Logistics Platform
+
+            </p>
+
+
+        </div>
+
+
+        {{ $slot }}
+
+
+    </div>
+
 
 </div>
-
-
-
-<h3 class="text-center mb-4">
-
-Cargo Management System
-
-</h3>
-
-
-
-{{ $slot }}
-
-
-
-</div>
-
-
 
 
 </body>
-
 
 </html>

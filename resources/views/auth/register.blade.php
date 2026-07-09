@@ -1,73 +1,56 @@
 <x-guest-layout>
 
-
-<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 px-4">
-
-
-<div class="w-full max-w-md">
-
-
-
-<div class="text-center mb-8">
-
-
-<div class="mx-auto w-20 h-20 rounded-full bg-blue-600 flex items-center justify-center">
-
-⚓
-
-</div>
-
-
-<h1 class="text-3xl font-bold text-white mt-4">
-
-Join Cargo System
-
-</h1>
-
-
-<p class="text-blue-300">
-
-Create secure logistics account
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-
-<div class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 shadow-2xl">
-
-
-
-<form method="POST" action="{{route('register')}}">
+<form method="POST" action="{{ route('register') }}">
 
 @csrf
 
 
 
-<div class="mb-4">
+<!-- Name -->
 
-<label class="text-gray-200">
-Full Name
-</label>
+<div>
+
+<x-input-label 
+for="name"
+:value="__('Full Name')"
+class="text-gray-700 font-semibold"
+/>
 
 
-<input
+<div class="mt-2">
+
+<x-text-input
+
+id="name"
+
+class="block w-full rounded-xl border-gray-300
+focus:border-blue-500 focus:ring-blue-500
+shadow-sm py-3"
+
+type="text"
 
 name="name"
 
+:value="old('name')"
+
 required
 
-placeholder="John Doe"
+autofocus
 
-class="w-full mt-2 px-4 py-3 rounded-xl bg-white/20 text-white border border-white/30 outline-none"
+autocomplete="name"
 
->
+placeholder="Enter your full name"
+
+/>
+
+</div>
+
+
+<x-input-error 
+:messages="$errors->get('name')"
+class="mt-2"
+/>
+
 
 </div>
 
@@ -75,27 +58,59 @@ class="w-full mt-2 px-4 py-3 rounded-xl bg-white/20 text-white border border-whi
 
 
 
+<!-- Email -->
 
-<div class="mb-4">
-
-<label class="text-gray-200">
-Email Address
-</label>
+<div class="mt-5">
 
 
-<input
+<x-input-label
+
+for="email"
+
+:value="__('Email Address')"
+
+class="text-gray-700 font-semibold"
+
+/>
+
+
+<div class="mt-2">
+
+
+<x-text-input
+
+id="email"
+
+class="block w-full rounded-xl border-gray-300
+focus:border-blue-500 focus:ring-blue-500
+shadow-sm py-3"
 
 type="email"
 
 name="email"
 
+:value="old('email')"
+
 required
 
-placeholder="john@gmail.com"
+autocomplete="username"
 
-class="w-full mt-2 px-4 py-3 rounded-xl bg-white/20 text-white border border-white/30 outline-none"
+placeholder="Enter your email"
 
->
+/>
+
+
+</div>
+
+
+<x-input-error
+
+:messages="$errors->get('email')"
+
+class="mt-2"
+
+/>
+
 
 </div>
 
@@ -103,15 +118,32 @@ class="w-full mt-2 px-4 py-3 rounded-xl bg-white/20 text-white border border-whi
 
 
 
+<!-- Password -->
 
-<div class="mb-4">
-
-<label class="text-gray-200">
-Password
-</label>
+<div class="mt-5">
 
 
-<input
+<x-input-label
+
+for="password"
+
+:value="__('Password')"
+
+class="text-gray-700 font-semibold"
+
+/>
+
+
+<div class="mt-2">
+
+
+<x-text-input
+
+id="password"
+
+class="block w-full rounded-xl border-gray-300
+focus:border-blue-500 focus:ring-blue-500
+shadow-sm py-3"
 
 type="password"
 
@@ -119,9 +151,25 @@ name="password"
 
 required
 
-class="w-full mt-2 px-4 py-3 rounded-xl bg-white/20 text-white border border-white/30 outline-none"
+autocomplete="new-password"
 
->
+placeholder="Create password"
+
+/>
+
+
+</div>
+
+
+
+<x-input-error
+
+:messages="$errors->get('password')"
+
+class="mt-2"
+
+/>
+
 
 </div>
 
@@ -130,15 +178,33 @@ class="w-full mt-2 px-4 py-3 rounded-xl bg-white/20 text-white border border-whi
 
 
 
-
-<div class="mb-6">
-
-<label class="text-gray-200">
-Confirm Password
-</label>
+<!-- Confirm Password -->
 
 
-<input
+<div class="mt-5">
+
+
+<x-input-label
+
+for="password_confirmation"
+
+:value="__('Confirm Password')"
+
+class="text-gray-700 font-semibold"
+
+/>
+
+
+<div class="mt-2">
+
+
+<x-text-input
+
+id="password_confirmation"
+
+class="block w-full rounded-xl border-gray-300
+focus:border-blue-500 focus:ring-blue-500
+shadow-sm py-3"
 
 type="password"
 
@@ -146,9 +212,16 @@ name="password_confirmation"
 
 required
 
-class="w-full mt-2 px-4 py-3 rounded-xl bg-white/20 text-white border border-white/30 outline-none"
+autocomplete="new-password"
 
->
+placeholder="Confirm password"
+
+/>
+
+
+</div>
+
+
 
 </div>
 
@@ -158,48 +231,40 @@ class="w-full mt-2 px-4 py-3 rounded-xl bg-white/20 text-white border border-whi
 
 
 
-<button
+<!-- Button -->
 
-class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold">
-
-
-CREATE ACCOUNT
+<div class="mt-8 flex items-center justify-between">
 
 
-</button>
+<a
 
+href="{{ route('login') }}"
 
+class="text-sm text-blue-600 hover:text-blue-800 font-semibold"
 
-
-
-<p class="text-center text-gray-300 mt-6">
-
+>
 
 Already registered?
-
-
-<a href="{{route('login')}}" class="text-blue-300">
-
-Login
 
 </a>
 
 
-</p>
+
+<x-primary-button>
+
+Create Account
+
+</x-primary-button>
+
+
+
+</div>
+
 
 
 
 
 </form>
-
-
-</div>
-
-
-</div>
-
-
-</div>
 
 
 </x-guest-layout>

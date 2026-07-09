@@ -1,211 +1,204 @@
 <x-guest-layout>
 
-<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 px-4">
+<form method="POST" action="{{ route('login') }}">
+
+    @csrf
 
 
-    <div class="w-full max-w-md">
+    <!-- Email -->
+
+    <div>
+
+        <x-input-label 
+            for="email" 
+            :value="__('Email Address')" 
+            class="text-gray-700 font-semibold"
+        />
 
 
-        <!-- Logo Area -->
+        <div class="mt-2">
 
-        <div class="text-center mb-8">
+            <x-text-input
+                id="email"
+                class="block w-full rounded-xl border-gray-300 
+                focus:border-blue-500 focus:ring-blue-500
+                shadow-sm py-3"
+                type="email"
+                name="email"
+                :value="old('email')"
+                required
+                autofocus
+                autocomplete="username"
+                placeholder="Enter your email"
+            />
 
-            <div class="mx-auto w-20 h-20 rounded-full bg-blue-600 flex items-center justify-center shadow-lg">
-
-                <span class="text-white text-3xl font-bold">
-                    ⚓
-                </span>
-
-            </div>
+        </div>
 
 
-            <h1 class="mt-5 text-3xl font-bold text-white">
+        <x-input-error 
+            :messages="$errors->get('email')" 
+            class="mt-2"
+        />
 
-                Cargo Management System
-
-            </h1>
+    </div>
 
 
-            <p class="text-blue-300 mt-2">
 
-                Secure Port Logistics Platform
 
-            </p>
+    <!-- Password -->
+
+    <div class="mt-5">
+
+
+        <x-input-label 
+            for="password" 
+            :value="__('Password')"
+            class="text-gray-700 font-semibold"
+        />
+
+
+        <div class="mt-2">
+
+
+            <x-text-input
+
+                id="password"
+
+                class="block w-full rounded-xl border-gray-300 
+                focus:border-blue-500 focus:ring-blue-500
+                shadow-sm py-3"
+
+                type="password"
+
+                name="password"
+
+                required
+
+                autocomplete="current-password"
+
+                placeholder="Enter your password"
+
+            />
 
 
         </div>
 
 
-
-
-
-        <!-- Login Card -->
-
-        <div class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl p-8">
-
-
-            <h2 class="text-xl font-semibold text-white mb-6">
-
-                Sign in to your account
-
-            </h2>
-
-
-
-
-            <form method="POST" action="{{ route('login') }}">
-
-                @csrf
-
-
-
-
-                <!-- Email -->
-
-                <div class="mb-5">
-
-
-                    <label class="block text-sm text-gray-200 mb-2">
-
-                        Email Address
-
-                    </label>
-
-
-                    <input
-
-                    type="email"
-
-                    name="email"
-
-                    required
-
-                    autofocus
-
-                    placeholder="example@gmail.com"
-
-                    class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
-
-                    >
-
-
-
-                </div>
-
-
-
-
-
-
-
-                <!-- Password -->
-
-                <div class="mb-5">
-
-
-                    <label class="block text-sm text-gray-200 mb-2">
-
-                        Password
-
-                    </label>
-
-
-
-                    <input
-
-                    type="password"
-
-                    name="password"
-
-                    required
-
-                    placeholder="********"
-
-                    class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
-
-                    >
-
-
-
-                </div>
-
-
-
-
-
-
-                <div class="flex justify-between items-center mb-6">
-
-
-                    <label class="text-sm text-gray-300">
-
-                        <input type="checkbox" name="remember">
-
-                        Remember me
-
-                    </label>
-
-
-
-                    <a href="#" class="text-sm text-blue-300">
-
-                        Forgot password?
-
-                    </a>
-
-
-
-                </div>
-
-
-
-
-
-
-                <button
-
-                class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold transition duration-300 shadow-lg">
-
-
-                    LOGIN TO SYSTEM
-
-
-                </button>
-
-
-
-
-
-
-
-                <p class="text-center text-gray-300 mt-6">
-
-
-                    Don't have account?
-
-
-                    <a href="{{route('register')}}" class="text-blue-300 font-semibold">
-
-                        Create Account
-
-                    </a>
-
-
-                </p>
-
-
-
-
-            </form>
-
-
-        </div>
+        <x-input-error 
+            :messages="$errors->get('password')" 
+            class="mt-2"
+        />
 
 
     </div>
 
 
-</div>
+
+
+
+    <!-- Remember -->
+
+    <div class="mt-5">
+
+
+        <label class="inline-flex items-center">
+
+
+            <input 
+
+            type="checkbox"
+
+            name="remember"
+
+            class="rounded border-gray-300 
+            text-blue-600 shadow-sm 
+            focus:ring-blue-500"
+
+
+            >
+
+
+            <span class="ml-2 text-sm text-gray-600">
+
+                Remember me
+
+            </span>
+
+
+        </label>
+
+
+    </div>
+
+
+
+
+
+
+    <!-- Button -->
+
+
+    <div class="mt-8 flex items-center justify-between">
+
+
+        @if (Route::has('password.request'))
+
+        <a 
+        class="text-sm text-blue-600 hover:text-blue-800 font-medium"
+        href="{{ route('password.request') }}"
+        >
+
+            Forgot password?
+
+        </a>
+
+
+        @endif
+
+
+
+        <x-primary-button>
+
+            Login
+
+        </x-primary-button>
+
+
+    </div>
+
+
+
+
+
+
+    <!-- Register link -->
+
+    <div class="text-center mt-8">
+
+
+        <p class="text-sm text-gray-600">
+
+            Don't have an account?
+
+
+            <a 
+            href="{{ route('register') }}"
+            class="text-blue-600 font-semibold hover:underline"
+            >
+
+            Create Account
+
+            </a>
+
+
+        </p>
+
+
+    </div>
+
+
+
+</form>
 
 
 </x-guest-layout>
