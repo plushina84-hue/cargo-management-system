@@ -1,16 +1,46 @@
 <x-guest-layout>
 
-<div class="min-h-screen flex items-center justify-center bg-gray-950">
+
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 px-4">
 
 
-<div class="w-full max-w-md bg-gray-900 p-8 rounded-2xl shadow-2xl border border-green-500">
+<div class="w-full max-w-md">
 
 
-<h1 class="text-center text-3xl font-bold text-green-400 mb-6">
 
-CREATE ACCOUNT
+<div class="text-center mb-8">
+
+
+<div class="mx-auto w-20 h-20 rounded-full bg-blue-600 flex items-center justify-center">
+
+⚓
+
+</div>
+
+
+<h1 class="text-3xl font-bold text-white mt-4">
+
+Join Cargo System
 
 </h1>
+
+
+<p class="text-blue-300">
+
+Create secure logistics account
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 shadow-2xl">
 
 
 
@@ -20,58 +50,78 @@ CREATE ACCOUNT
 
 
 
-<div>
+<div class="mb-4">
 
-<label class="text-gray-300">
-Name
+<label class="text-gray-200">
+Full Name
 </label>
 
+
 <input
+
 name="name"
-required
-class="w-full mt-2 p-3 bg-gray-800 text-white rounded-lg border border-gray-700"
->
 
+required
+
+placeholder="John Doe"
+
+class="w-full mt-2 px-4 py-3 rounded-xl bg-white/20 text-white border border-white/30 outline-none"
+
+>
 
 </div>
 
 
 
 
-<div class="mt-4">
 
-<label class="text-gray-300">
-Email
+
+<div class="mb-4">
+
+<label class="text-gray-200">
+Email Address
 </label>
 
 
 <input
-type="email"
-name="email"
-required
-class="w-full mt-2 p-3 bg-gray-800 text-white rounded-lg border border-gray-700"
->
 
+type="email"
+
+name="email"
+
+required
+
+placeholder="john@gmail.com"
+
+class="w-full mt-2 px-4 py-3 rounded-xl bg-white/20 text-white border border-white/30 outline-none"
+
+>
 
 </div>
 
 
 
 
-<div class="mt-4">
 
-<label class="text-gray-300">
+
+<div class="mb-4">
+
+<label class="text-gray-200">
 Password
 </label>
 
 
 <input
-type="password"
-name="password"
-required
-class="w-full mt-2 p-3 bg-gray-800 text-white rounded-lg border border-gray-700"
->
 
+type="password"
+
+name="password"
+
+required
+
+class="w-full mt-2 px-4 py-3 rounded-xl bg-white/20 text-white border border-white/30 outline-none"
+
+>
 
 </div>
 
@@ -79,50 +129,71 @@ class="w-full mt-2 p-3 bg-gray-800 text-white rounded-lg border border-gray-700"
 
 
 
-<div class="mt-4">
 
-<label class="text-gray-300">
+
+<div class="mb-6">
+
+<label class="text-gray-200">
 Confirm Password
 </label>
 
 
 <input
-type="password"
-name="password_confirmation"
-required
-class="w-full mt-2 p-3 bg-gray-800 text-white rounded-lg border border-gray-700"
->
 
+type="password"
+
+name="password_confirmation"
+
+required
+
+class="w-full mt-2 px-4 py-3 rounded-xl bg-white/20 text-white border border-white/30 outline-none"
+
+>
 
 </div>
 
 
 
 
-<button
-class="w-full mt-6 bg-green-600 hover:bg-green-700 py-3 rounded-lg text-white font-bold">
 
-REGISTER
+
+
+<button
+
+class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold">
+
+
+CREATE ACCOUNT
+
 
 </button>
 
 
 
 
-<div class="text-center mt-5">
 
-<a href="{{route('login')}}" class="text-green-400">
+<p class="text-center text-gray-300 mt-6">
 
-Already have account?
+
+Already registered?
+
+
+<a href="{{route('login')}}" class="text-blue-300">
+
+Login
 
 </a>
 
-</div>
+
+</p>
+
 
 
 
 </form>
 
+
+</div>
 
 
 </div>

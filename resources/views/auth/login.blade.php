@@ -1,131 +1,209 @@
 <x-guest-layout>
 
-<div class="min-h-screen flex items-center justify-center bg-gray-950">
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 px-4">
 
-    <div class="w-full max-w-md bg-gray-900 rounded-2xl shadow-2xl p-8 border border-green-500">
+
+    <div class="w-full max-w-md">
+
+
+        <!-- Logo Area -->
 
         <div class="text-center mb-8">
 
-            <h1 class="text-3xl font-bold text-green-400">
-                CYBER CARGO SYSTEM
+            <div class="mx-auto w-20 h-20 rounded-full bg-blue-600 flex items-center justify-center shadow-lg">
+
+                <span class="text-white text-3xl font-bold">
+                    ⚓
+                </span>
+
+            </div>
+
+
+            <h1 class="mt-5 text-3xl font-bold text-white">
+
+                Cargo Management System
+
             </h1>
 
-            <p class="text-gray-400 mt-2">
-                Secure Port Management Login
+
+            <p class="text-blue-300 mt-2">
+
+                Secure Port Logistics Platform
+
             </p>
+
 
         </div>
 
 
 
-        <form method="POST" action="{{ route('login') }}">
-
-            @csrf
 
 
-            <!-- Email -->
+        <!-- Login Card -->
 
-            <div>
-
-                <label class="text-gray-300">
-                    Email Address
-                </label>
+        <div class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl p-8">
 
 
-                <input
-                type="email"
-                name="email"
-                value="{{old('email')}}"
-                required
-                class="w-full mt-2 p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-green-500 focus:ring-green-500"
-                >
+            <h2 class="text-xl font-semibold text-white mb-6">
 
+                Sign in to your account
 
-                <x-input-error 
-                :messages="$errors->get('email')" 
-                class="mt-2 text-red-400" />
-
-            </div>
+            </h2>
 
 
 
 
-            <!-- Password -->
+            <form method="POST" action="{{ route('login') }}">
 
-
-            <div class="mt-5">
-
-                <label class="text-gray-300">
-                    Password
-                </label>
-
-
-                <input
-                type="password"
-                name="password"
-                required
-                class="w-full mt-2 p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-green-500 focus:ring-green-500"
-                >
-
-
-                <x-input-error 
-                :messages="$errors->get('password')" 
-                class="mt-2 text-red-400" />
-
-
-            </div>
+                @csrf
 
 
 
 
-            <!-- Remember -->
+                <!-- Email -->
+
+                <div class="mb-5">
 
 
-            <div class="mt-5">
+                    <label class="block text-sm text-gray-200 mb-2">
 
-                <label class="text-gray-400">
+                        Email Address
 
-                    <input 
-                    type="checkbox"
-                    name="remember"
+                    </label>
+
+
+                    <input
+
+                    type="email"
+
+                    name="email"
+
+                    required
+
+                    autofocus
+
+                    placeholder="example@gmail.com"
+
+                    class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
+
                     >
 
-                    Remember me
 
-                </label>
 
-            </div>
+                </div>
 
 
 
 
-            <button
-            class="w-full mt-6 bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg transition">
-
-                LOGIN SYSTEM
-
-            </button>
 
 
 
+                <!-- Password -->
 
-            <div class="text-center mt-5">
-
-                <a 
-                href="{{route('register')}}"
-                class="text-green-400 hover:underline">
-
-                    Create New Account
-
-                </a>
-
-            </div>
+                <div class="mb-5">
 
 
-        </form>
+                    <label class="block text-sm text-gray-200 mb-2">
+
+                        Password
+
+                    </label>
+
+
+
+                    <input
+
+                    type="password"
+
+                    name="password"
+
+                    required
+
+                    placeholder="********"
+
+                    class="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
+
+                    >
+
+
+
+                </div>
+
+
+
+
+
+
+                <div class="flex justify-between items-center mb-6">
+
+
+                    <label class="text-sm text-gray-300">
+
+                        <input type="checkbox" name="remember">
+
+                        Remember me
+
+                    </label>
+
+
+
+                    <a href="#" class="text-sm text-blue-300">
+
+                        Forgot password?
+
+                    </a>
+
+
+
+                </div>
+
+
+
+
+
+
+                <button
+
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold transition duration-300 shadow-lg">
+
+
+                    LOGIN TO SYSTEM
+
+
+                </button>
+
+
+
+
+
+
+
+                <p class="text-center text-gray-300 mt-6">
+
+
+                    Don't have account?
+
+
+                    <a href="{{route('register')}}" class="text-blue-300 font-semibold">
+
+                        Create Account
+
+                    </a>
+
+
+                </p>
+
+
+
+
+            </form>
+
+
+        </div>
 
 
     </div>
+
 
 </div>
 
