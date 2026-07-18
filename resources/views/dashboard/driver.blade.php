@@ -317,7 +317,7 @@ In Transit
 <td>
 
 
-<a href="{{ route('cargo.show',$cargo->id) }}"
+<a href="{{ route('tracking', ['code' => $cargo->tracking_number]) }}"
 
 class="btn btn-sm btn-primary">
 

@@ -396,7 +396,11 @@ Welcome,
 <div class="main-content">
 
 
-@yield('content')
+@isset($slot)
+    {{ $slot }}
+@else
+    @yield('content')
+@endisset
 
 
 </div>

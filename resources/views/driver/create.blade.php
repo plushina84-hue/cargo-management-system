@@ -230,7 +230,7 @@ Status
 
 
 
-<select name="status"
+<select name="availability"
 
 class="form-select">
 

@@ -158,7 +158,7 @@ Add Driver
 <td>
 
 
-@if(($driver->status ?? '') == 'available')
+@if(($driver->availability ?? '') == 'available')
 
 
 <span class="badge bg-success">
@@ -174,7 +174,7 @@ Available
 
 <span class="badge bg-secondary">
 
-{{ $driver->status ?? 'Inactive' }}
+{{ $driver->availability ?? 'Inactive' }}
 
 </span>
 

@@ -144,7 +144,7 @@ Status
 
 
 
-<select name="status"
+<select name="availability"
 
 class="form-select">
 
@@ -152,7 +152,7 @@ class="form-select">
 
 <option value="available"
 
-@if($driver->status == 'available')
+@if($driver->availability == 'available')
 
 selected
 
@@ -167,7 +167,7 @@ Available
 
 <option value="busy"
 
-@if($driver->status == 'busy')
+@if($driver->availability == 'busy')
 
 selected
 

@@ -297,7 +297,7 @@ selected
 
 
 
-{{ $vehicle->registration_number }}
+{{ $vehicle->plate_number }}
 
 
 
