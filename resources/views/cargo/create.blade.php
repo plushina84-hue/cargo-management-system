@@ -197,6 +197,84 @@ value="{{ old('destination') }}">
 
 
 
+<div class="col-md-6 mb-3">
+
+
+<label class="form-label">
+
+Weight (kg)
+
+</label>
+
+
+<input type="number"
+
+name="weight"
+
+class="form-control"
+
+min="1"
+
+placeholder="Example: 500"
+
+value="{{ old('weight') }}">
+
+
+@error('weight')
+
+<div class="text-danger">
+
+{{ $message }}
+
+</div>
+
+@enderror
+
+
+</div>
+
+
+
+
+
+<div class="col-md-6 mb-3">
+
+
+<label class="form-label">
+
+Cargo Type
+
+</label>
+
+
+<input type="text"
+
+name="cargo_type"
+
+class="form-control"
+
+placeholder="Example: Electronics"
+
+value="{{ old('cargo_type') }}">
+
+
+@error('cargo_type')
+
+<div class="text-danger">
+
+{{ $message }}
+
+</div>
+
+@enderror
+
+
+</div>
+
+
+
+
+
 
 
 
@@ -282,7 +360,7 @@ Select Vehicle
 <option value="{{ $vehicle->id }}">
 
 
-{{ $vehicle->registration_number }}
+{{ $vehicle->plate_number }}
 
 
 </option>

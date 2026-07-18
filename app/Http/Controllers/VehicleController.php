@@ -7,57 +7,66 @@ use Illuminate\Http\Request;
 
 class VehicleController extends Controller
 {
-
     public function index()
     {
-        $vehicles = Vehicle::all();
+        $vehicles = Vehicle::latest()->get();
 
         return view('vehicle.index', compact('vehicles'));
     }
-
 
     public function create()
     {
         return view('vehicle.create');
     }
 
-
     public function store(Request $request)
     {
-
-        $request->validate([
-            'plate_number'=>'required',
-            'type'=>'required',
-            'capacity'=>'required'
+        $validated = $request->validate([
+            'plate_number' => 'required|string|max:255|unique:vehicles,plate_number',
+            'type' => 'required|string|max:255',
+            'capacity' => 'required|integer|min:1',
+            'status' => 'required|in:available,busy,maintenance',
         ]);
 
-
-        Vehicle::create([
-
-            'plate_number'=>$request->plate_number,
-
-            'type'=>$request->type,
-
-            'capacity'=>$request->capacity,
-
-            'status'=>'available'
-
-        ]);
-
+        Vehicle::create($validated);
 
         return redirect()
-        ->route('vehicle.index');
-
+            ->route('vehicle.index')
+            ->with('success', 'Vehicle created successfully');
     }
 
+    public function show(Vehicle $vehicle)
+    {
+        return redirect()->route('vehicle.edit', $vehicle);
+    }
 
+    public function edit(Vehicle $vehicle)
+    {
+        return view('vehicle.edit', compact('vehicle'));
+    }
+
+    public function update(Request $request, Vehicle $vehicle)
+    {
+        $validated = $request->validate([
+            'plate_number' => 'required|string|max:255|unique:vehicles,plate_number,'.$vehicle->id,
+            'type' => 'required|string|max:255',
+            'capacity' => 'required|integer|min:1',
+            'status' => 'required|in:available,busy,maintenance',
+        ]);
+
+        $vehicle->update($validated);
+
+        return redirect()
+            ->route('vehicle.index')
+            ->with('success', 'Vehicle updated successfully');
+    }
 
     public function destroy(Vehicle $vehicle)
     {
         $vehicle->delete();
 
         return redirect()
-        ->route('vehicle.index');
+            ->route('vehicle.index')
+            ->with('success', 'Vehicle deleted successfully');
     }
-
 }

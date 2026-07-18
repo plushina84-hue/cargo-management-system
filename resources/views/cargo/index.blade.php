@@ -153,7 +153,7 @@ Add Cargo
 
 <td>
 
-{{ $cargo->vehicle->registration_number ?? 'Not Assigned' }}
+{{ $cargo->vehicle->plate_number ?? 'Not Assigned' }}
 
 </td>
 

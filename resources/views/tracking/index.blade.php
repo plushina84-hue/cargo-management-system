@@ -82,7 +82,7 @@ Track
 
 
 
-@if(isset($cargo))
+@if($cargo)
 
 
 
@@ -406,12 +406,16 @@ Delivered
 
 
 
+@elseif(request('code'))
+
+<div class="card p-4 text-center">
+    <h5 class="mb-2">No shipment found</h5>
+    <p class="text-muted mb-0">
+        No cargo matched tracking number
+        <strong>{{ request('code') }}</strong>
+    </p>
+</div>
+
 @endif
-
-
-
-
-
-
 
 @endsection

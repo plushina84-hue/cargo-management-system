@@ -1,35 +1,15 @@
-<x-app-layout>
+@extends('layouts.app')
 
-<div class="py-12">
+@section('content')
 
-<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+<div class="mb-4">
+    <h2 class="fw-bold">Welcome {{ auth()->user()->name }}</h2>
+    <p class="text-muted">You are logged in successfully.</p>
+</div>
 
-<div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-
-<div class="p-6 text-gray-900">
-
-<h1 class="text-2xl font-bold">
-Welcome {{ auth()->user()->name }}
-</h1>
-
-
-<p class="mt-4">
-You are logged in successfully.
-</p>
-
-
-<a href="{{ route('tracking') }}"
-class="text-blue-600 underline">
-Go to Tracking Services
+<a href="{{ route('tracking') }}" class="btn btn-primary">
+    <i class="bi bi-geo-alt"></i>
+    Go to Tracking Services
 </a>
 
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</x-app-layout>
+@endsection
